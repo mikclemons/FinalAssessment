@@ -1,5 +1,6 @@
 package com.detroitlabs.Controller;
 
+import com.detroitlabs.Model.CharacterInfo;
 import com.detroitlabs.Model.MovieData;
 import com.detroitlabs.Services.MovieDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,17 @@ public class MovieDataController {
                 movieData.getOpening_Crawl() +
                 movieData.getDirector() +
                 movieData.getProducer() +
-                movieData.getReleaseDate() + "\n" +
-                movieData.getCharacterListUrlWrapper();
+                movieData.getReleaseDate();
+
+    }
+
+    @ResponseBody
+    @RequestMapping("/people")
+    public CharacterInfo displayCharacterInfo(){
+        MovieData movieData = movieService.fetchMovieData();
+        String characterUrl = movieData.getCharacterListUrlWrapper().get(0);
+        CharacterInfo characterInfo = movieService.fetchCharacterData(characterUrl);
+        return characterInfo;
+
     }
 }

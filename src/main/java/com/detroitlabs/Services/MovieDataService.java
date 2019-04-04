@@ -1,5 +1,6 @@
 package com.detroitlabs.Services;
 
+import com.detroitlabs.Model.CharacterInfo;
 import com.detroitlabs.Model.CharacterUrl;
 import com.detroitlabs.Model.MovieData;
 import org.springframework.http.*;
@@ -24,6 +25,19 @@ public class MovieDataService {
         return responseEntity.getBody();
     }
 
+    public CharacterInfo fetchCharacterData(String characterUrl){
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("User-Agent", "Spring");
+
+        HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+
+        ResponseEntity<CharacterInfo> responseEntity =
+                restTemplate.exchange(characterUrl ,HttpMethod.GET, httpEntity,  CharacterInfo.class);
+
+        return responseEntity.getBody();
+    }
 
     }
 
