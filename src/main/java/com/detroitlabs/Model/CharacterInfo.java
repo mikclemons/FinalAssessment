@@ -2,14 +2,12 @@ package com.detroitlabs.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 public class CharacterInfo {
 
     private String name;
     private String birthYear;
     private String gender;
-    private List<String> homeworldUrlWrapper;
+    private String homeworld;
 
     @JsonProperty("name")
     public String getName() {
@@ -41,13 +39,13 @@ public class CharacterInfo {
         this.gender = gender;
     }
 
-    @JsonProperty("homeworldUrlWrapper")
-    public List<String> getHomeworldUrlWrapper() {
-        return homeworldUrlWrapper;
+    @JsonProperty("homeworld")
+    public String getHomeworld() {
+        return homeworld;
     }
 
-    @JsonProperty("homeworldUrlWrapper")
-    public void setHomeworldUrlWrapper(List<String> homeworldUrlWrapper) {
-        this.homeworldUrlWrapper = homeworldUrlWrapper;
+    @JsonProperty("homeworld")
+    public void setHomeworld(String homeworld) {
+        this.homeworld = homeworld;
     }
 }
