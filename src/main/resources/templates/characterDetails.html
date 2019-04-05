@@ -11,8 +11,8 @@
     <title>Star Wars | Home</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../../../../Downloads/startbootstrap-bare-gh-pages/vendor/bootstrap/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link th:href="@{app.css}"
+          rel="stylesheet"/>
 
 </head>
 
@@ -34,13 +34,15 @@
 <h1>Character Details</h1>
     </div>
     <div class="row">
-        <a
-        <div th:each="character : ${characterInfo}">
-        <h2 th:text="${character.name}"></h2>
-        <h2 th:text="${character.birthYear}"></h2>
-        <h2 th:text="${character.gender}"></h2>
-        <h2 th:text="${character.homeworldUrlWrapper}"></h2>
+
+        <div th:each="character : ${characterInfo}" >
+            <h1 th:text="'Name: ' + ${character.name}"></h1>
+            <h3 th:text="'Birth Year: ' + ${character.birthYear}"></h3>
+            <h3 th:text="'Gender: ' + ${character.gender}"></h3>
+            <h3 th:text="'Homeworld: ' + ${character.homeworld}"></h3>
+            <br>
+        </div>
     </div>
-    </div>
+</div>
 </div>
 </body>
